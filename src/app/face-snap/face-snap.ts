@@ -1,9 +1,13 @@
 import {Component, input, OnInit, signal} from '@angular/core';
 import {FaceSnapModel} from '../model/face-snap.model';
+import {NgClass, NgStyle} from '@angular/common';
 
 @Component({
   selector: 'app-face-snap',
-  imports: [],
+  imports: [
+    NgStyle,
+    NgClass
+  ],
   templateUrl: './face-snap.html',
   styleUrl: './face-snap.scss',
 })
@@ -15,7 +19,7 @@ export class FaceSnap implements OnInit {
   createdAt!: Date;
   snaps!: number;
   imageUrl = 'https://cdn.pixabay.com/photo/2025/12/01/13/42/santa-claus-9988270_960_720.jpg';
-  addSnap =signal<boolean>( false);
+  addSnap = signal<boolean>(false);
 
   ngOnInit() {
   }
