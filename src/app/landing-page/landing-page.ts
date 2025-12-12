@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './landing-page.html',
   styleUrl: './landing-page.scss',
 })
-export class LandingPage {}
+export class LandingPage {
+  private router = inject(Router);
+  onContinue() {
+    this.router.navigateByUrl('facesnaps');
+  }
+}
