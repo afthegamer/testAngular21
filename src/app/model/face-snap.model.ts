@@ -1,19 +1,14 @@
 export class FaceSnapModel {
   location?: string;
+  id:string;
   constructor(
     public title: string,
     public  description: string,
     public  imageUrl: string,
     public  createdAt: Date,
     public snaps: number
-  ) {}
-
-  onAddSnap() {
-    this.snaps++;
-  }
-
-  onUnSnap() {
-    this.snaps--;
+  ) {
+    this.id=crypto.randomUUID();
   }
   setLocation(location: string):FaceSnapModel {
     this.location = location;
