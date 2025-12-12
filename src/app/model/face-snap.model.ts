@@ -1,5 +1,5 @@
 export class FaceSnapModel {
-
+  location?: string;
   constructor(
     public title: string,
     public  description: string,
@@ -14,5 +14,12 @@ export class FaceSnapModel {
 
   onUnSnap() {
     this.snaps--;
+  }
+  setLocation(location: string):FaceSnapModel {
+    this.location = location;
+    return this;
+  }
+  withLocation(location: string):FaceSnapModel{
+    return this.setLocation(location);
   }
 }
