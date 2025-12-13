@@ -1,14 +1,8 @@
-<div [ngClass]="{snapped:addSnap()}"
-     class="face-snap-card">
+<div
+  class="face-snap-card">
   <h2>{{ faceSnap().title }}</h2>
-  <p>{{faceSnap().location}}</p>
-  <img [alt]="faceSnap().title" [src]="faceSnap().imageUrl">
-  <p>{{ faceSnap().description }}</p>
-  <p>FaceSnap créée le {{ faceSnap().createdAt| date: 'dd/MM/yyyy' }}</p>
-  <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap().snaps + ', 0)' }">🤌 {{ faceSnap().snaps }}</span>
   <div>
-    <button (click)="addSnap() ? onUnSnap() : onAddSnap()">{{ addSnap() ? 'unSnap' : 'snap' }}
-    </button>
+    <button (click)="onViewFaceSnap()" routerLink="{{faceSnap().id}}">View details</button>
   </div>
 </div>
 
