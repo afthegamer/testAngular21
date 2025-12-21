@@ -1,1 +1,39 @@
-<p>new-face-snap works!</p>
+<div class="form-card">
+  <h2>NOUVEAU FACESNAP</h2>
+  <form [formGroup]="snapForm">
+    <div class="form-group">
+      <label for="title">Titre</label>
+      <input formControlName="title" id="title" type="text">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea formControlName="description" id="description" rows="4" type="text">
+        </textarea>
+    </div>
+    <div class="form-group">
+      <label for="imageUrl">URL de l'image</label>
+      <input formControlName="imageUrl" id="imageUrl" type="text">
+    </div>
+    <div class="form-group">
+      <label for="location">Lieu</label>
+      <input formControlName="location" id="location" type="text">
+    </div>
+    <div class="action-buttons">
+      <button (click)="onSubmitForm()" type="submit">Enregistrer</button>
+    </div>
+  </form>
+</div>
+@if (faceSnapPreview$ | async; as faceSnap) {
+  <div class="face-snap-card">
+    <h2>{{ faceSnap.title | uppercase }}</h2>
+    <p>Mis en ligne {{ faceSnap.createdAt | date: "à HH:mm, le d MMMM yyyy" }}</p>
+
+    <img [alt]="faceSnap.title" [src]="faceSnap.imageUrl"/>
+
+    <p>{{ faceSnap.description }}</p>
+
+    @if (faceSnap.location) {
+      <p>Photo prise à {{ faceSnap.location }}</p>
+    }
+  </div>
+}
