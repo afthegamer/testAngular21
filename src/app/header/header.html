@@ -3,7 +3,8 @@
   <nav>
     <a [routerLinkActiveOptions]="{ exact: true }" routerLink="" routerLinkActive="active">Home</a>
     <a [routerLinkActiveOptions]="{ exact: true }" routerLink="facesnaps" routerLinkActive="active"
-      >FaceSnaps</a
+    >FaceSnaps</a
     >
+    <button (click)="onAddNewFaceSnap()">+</button>
   </nav>
 </header>

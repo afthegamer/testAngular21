@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './header/header';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
-  imports: [RouterOutlet, Header],
+  imports: [RouterOutlet, Header, FormsModule],
 })
 export class App {
   /* redTrainsCalled = 0;
