@@ -6,7 +6,7 @@ import { SnapType } from '../model/snap-type.type';
   providedIn: 'root',
 })
 export class FaceSnapsService {
-  private faceSanps: Array<FaceSnapModel> = [
+  private faceSnaps: Array<FaceSnapModel> = [
     new FaceSnapModel(
       'Archibald',
       'Mon meilleur ami depuis tout petit !',
@@ -30,11 +30,11 @@ export class FaceSnapsService {
     ).withLocation('Nantes'),
   ];
   getAllFaceSnaps(): Array<FaceSnapModel> {
-    return [...this.faceSanps];
+    return [...this.faceSnaps];
   }
 
   getFaceSnapById(faceSnapId: string): FaceSnapModel {
-    const fondFaceSnap = this.faceSanps.find((faceSnap) => faceSnap.id === faceSnapId);
+    const fondFaceSnap = this.faceSnaps.find((faceSnap) => faceSnap.id === faceSnapId);
     if (!fondFaceSnap) {
       throw new Error('FaceSnap not found!');
     }
@@ -48,5 +48,25 @@ export class FaceSnapsService {
     } else {
       throw new Error('SingleFaceSnap not found!');
     }
+  }
+  addFaceSnap(formValue: {
+    title: string;
+    description: string;
+    imageUrl: string;
+    location?: string;
+  }): void {
+    const faceSnap = new FaceSnapModel(
+      formValue.title,
+      formValue.description,
+      formValue.imageUrl,
+      new Date(),
+      0,
+    );
+
+    if (formValue.location?.trim()) {
+      faceSnap.setLocation(formValue.location.trim());
+    }
+
+    this.faceSnaps.push(faceSnap);
   }
 }
