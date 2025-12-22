@@ -2,7 +2,6 @@ import { inject, Injectable } from '@angular/core';
 import { FaceSnapModel } from '../model/face-snap.model';
 import { SnapType } from '../model/snap-type.type';
 import { HttpClient } from '@angular/common/http';
-import { FaceSnap } from '../face-snap/face-snap';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,7 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class FaceSnapsService {
   private http = inject(HttpClient);
-  private faceSnaps: Array<FaceSnapModel> = [
+  private faceSnaps: Array<FaceSnapModel> = [];
+  /*[
     new FaceSnapModel(
       'Archibald',
       'Mon meilleur ami depuis tout petit !',
@@ -32,10 +32,10 @@ export class FaceSnapsService {
       new Date(),
       0,
     ).withLocation('Nantes'),
-  ];
+  ];*/
 
-  getAllFaceSnaps(): Observable<FaceSnap[]> {
-    return this.http.get<FaceSnap[]>('/api/facesnaps');
+  getAllFaceSnaps(): Observable<FaceSnapModel[]> {
+    return this.http.get<FaceSnapModel[]>('http://localhost:3000/facesnaps');
   }
 
   getFaceSnapById(faceSnapId: string): FaceSnapModel {

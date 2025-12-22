@@ -9,11 +9,11 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './face-snap.scss',
 })
 export class FaceSnap {
-  faceSnap = input.required<FaceSnapModel>();
+  faceSnapModel = input.required<FaceSnapModel>();
   addSnap = signal<boolean>(false);
   private router = inject(Router);
 
   protected onViewFaceSnap() {
-    this.router.navigateByUrl(`facesnaps/${this.faceSnap().id}`);
+    this.router.navigateByUrl(`facesnaps/${this.faceSnapModel().id}`);
   }
 }
