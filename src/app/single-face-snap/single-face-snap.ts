@@ -21,14 +21,14 @@ export class SingleFaceSnap implements OnInit {
   ngOnInit() {
     this.getFaceSnap();
   }
-  onAddSnap(faceSnapId: number) {
-    this.faceSnapService
+  onAddSnap(faceSnapId: number): void {
+    this.faceSnap$ = this.faceSnapService
       .snapFaceSnapById(faceSnapId, 'snap')
       .pipe(tap(() => this.addSnap.set(true)));
   }
 
-  onUnSnap(faceSnapId: number) {
-    this.faceSnapService
+  onUnSnap(faceSnapId: number): void {
+    this.faceSnap$ = this.faceSnapService
       .snapFaceSnapById(faceSnapId, 'unsnap')
       .pipe(tap(() => this.addSnap.set(false)));
   }
