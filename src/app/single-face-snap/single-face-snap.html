@@ -1,15 +1,17 @@
-<div [ngClass]="{snapped:addSnap()}"
-     class="face-snap-card">
-  <h2>{{ faceSnap.title }}</h2>
-  <a routerLink="{{'/facesnaps'}}">back</a>
-  <p>{{ faceSnap.location }}</p>
-  <img [alt]="faceSnap.title" [src]="faceSnap.imageUrl">
-  <p>{{ faceSnap.description }}</p>
-  <p>FaceSnap créée le {{ faceSnap.createdAt| date: 'dd/MM/yyyy' }}</p>
-  <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)' }">🤌 {{ faceSnap.snaps }}</span>
-  <div>
-    <button (click)="addSnap() ? onUnSnap() : onAddSnap()">{{ addSnap() ? 'unSnap' : 'snap' }}
-    </button>
+@if (faceSnap$|async; as faceSnap) {
+  <div [ngClass]="{snapped:addSnap()}"
+       class="face-snap-card">
+    <h2>{{ faceSnap.title }}</h2>
+    <a routerLink="{{'/facesnaps'}}">back</a>
+    <p>{{ faceSnap.location }}</p>
+    <img [alt]="faceSnap.title" [src]="faceSnap.imageUrl">
+    <p>{{ faceSnap.description }}</p>
+    <p>FaceSnap créée le {{ faceSnap.createdAt| date: 'dd/MM/yyyy' }}</p>
+    <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)' }">🤌 {{ faceSnap.snaps }}</span>
+    <div>
+      <button (click)="addSnap() ? onUnSnap(faceSnap.id) : onAddSnap(faceSnap.id)">{{ addSnap() ? 'unSnap' : 'snap' }}
+      </button>
+    </div>
   </div>
-</div>
 
+}
