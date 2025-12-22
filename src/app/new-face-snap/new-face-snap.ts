@@ -17,7 +17,7 @@ export class NewFaceSnap implements OnInit {
   faceSnapPreview$!: Observable<FaceSnapModel>;
   formBuilder = inject(FormBuilder);
   faceSnapsService = inject(FaceSnapsService);
-  route = inject(Router);
+  router = inject(Router);
 
   ngOnInit(): void {
     this.snapForm = this.formBuilder.group(
@@ -51,6 +51,6 @@ export class NewFaceSnap implements OnInit {
 
   onSubmitForm() {
     this.faceSnapsService.addFaceSnap(this.snapForm.value);
-    this.route.navigateByUrl('/facesnaps');
+    this.router.navigateByUrl('/facesnaps');
   }
 }
