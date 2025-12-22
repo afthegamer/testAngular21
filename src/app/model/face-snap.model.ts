@@ -1,6 +1,6 @@
 export class FaceSnapModel {
   location?: string;
-  id: string;
+  id: number;
   constructor(
     public title: string,
     public description: string,
@@ -8,7 +8,7 @@ export class FaceSnapModel {
     public createdAt: Date,
     public snaps: number,
   ) {
-    this.id = crypto.randomUUID();
+    this.id = Math.random();
   }
   setLocation(location: string): FaceSnapModel {
     this.location = location;

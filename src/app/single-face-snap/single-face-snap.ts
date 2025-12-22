@@ -3,7 +3,7 @@ import { FaceSnapModel } from '../model/face-snap.model';
 import { AsyncPipe, DatePipe, NgClass, NgStyle } from '@angular/common';
 import { FaceSnapsService } from '../services/face-snaps.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-single-face-snap',
@@ -22,13 +22,15 @@ export class SingleFaceSnap implements OnInit {
     this.getFaceSnap();
   }
   onAddSnap(faceSnapId: number) {
-    this.faceSnapService.snapFaceSnapById(faceSnapId, 'snap');
-    this.addSnap.set(true);
+    this.faceSnapService
+      .snapFaceSnapById(faceSnapId, 'snap')
+      .pipe(tap(() => this.addSnap.set(true)));
   }
 
   onUnSnap(faceSnapId: number) {
-    this.faceSnapService.snapFaceSnapById(faceSnapId, 'unsnap');
-    this.addSnap.set(false);
+    this.faceSnapService
+      .snapFaceSnapById(faceSnapId, 'unsnap')
+      .pipe(tap(() => this.addSnap.set(false)));
   }
 
   private getFaceSnap() {
