@@ -8,9 +8,9 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.scss',
 })
 export class Header {
-  router = inject(Router);
-  onAddNewFaceSnap() {
-    this.router.navigateByUrl('/create');
-    console.log('Adding a new FaceSnap...');
+  private readonly router = inject(Router);
+
+  onAddNewFaceSnap(): void {
+    this.router.navigateByUrl('/facesnaps/new');
   }
 }
