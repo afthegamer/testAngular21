@@ -1,16 +1,9 @@
-import { ApplicationConfig, LOCALE_ID, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { routes } from './app.routes';
-import { httpInterceptorProvider } from './interceptors';
+import { provideCore } from './core/core.providers';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideRouter(routes),
-    provideHttpClient(withInterceptorsFromDi()),
-    { provide: LOCALE_ID, useValue: 'fr-FR' },
-    ...httpInterceptorProvider,
-  ],
+  providers: [provideCore(), provideRouter(routes)],
 };

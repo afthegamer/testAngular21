@@ -8,9 +8,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { map, Observable, tap } from 'rxjs';
-import { FaceSnapModel } from '../model/face-snap.model';
+import { FaceSnapModel } from '../../../../shared/model/face-snap.model';
 import { AsyncPipe, DatePipe, UpperCasePipe } from '@angular/common';
-import { FaceSnapsService } from '../services/face-snaps.service';
+import { FaceSnapsService } from '../../data-acess/face-snaps.service';
 import { Router } from '@angular/router';
 
 @Component({

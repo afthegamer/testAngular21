@@ -1,5 +1,5 @@
 import { Component, inject, input, signal } from '@angular/core';
-import { FaceSnapModel } from '../model/face-snap.model';
+import { FaceSnapModel } from '../../../shared/model/face-snap.model';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({

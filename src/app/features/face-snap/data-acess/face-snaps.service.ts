@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
-import { FaceSnapModel } from '../model/face-snap.model';
-import { SnapType } from '../model/snap-type.type';
+import { FaceSnapModel } from '../../../shared/model/face-snap.model';
+import { SnapType } from '../../../shared/model/snap-type.type';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, switchMap } from 'rxjs';
 
